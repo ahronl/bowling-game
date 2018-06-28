@@ -16,4 +16,4 @@
 
 (deftest game-with-a-spare
   (testing "when invoke score on a game with spare it returns adds the next roll to score"
-        (is (= (score (concat '(8 2 3) (repeat 17 0))) 16))))
+        (is (= (score (concat '(8 2) '(3 7) (repeat 17 0))) 23))))
