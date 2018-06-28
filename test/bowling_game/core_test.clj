@@ -15,5 +15,9 @@
         (is (= (score (repeat 20 1)) 20))))
 
 (deftest game-with-a-spare
-  (testing "when invoke score on a game with spare it returns adds the next roll to score"
+  (testing "when invoke score on a game with spare it adds the next roll to score"
         (is (= (score (concat '(8 2) '(3 7) (repeat 17 0))) 23))))
+
+(deftest game-with-strike
+  (testing "when invoke score on a game with strike it adds 10 points")
+        (is (= (score (concat '(10) '(5 3) (repeat 16 0))) 26)))

@@ -6,20 +6,30 @@
   [& args]
   (println "Hello, World!"))
 
+(defn is-strike
+  [rolls]
+  (= 10 (first rolls)))
 
 (defn is-spare
   [rolls]
   (= 10 (apply + (take 2 rolls))))
 
-(defn get-frame-roll-count
+(defn get-num-rolls-for-score
   [rolls]
-  (if
+  (cond
     (is-spare rolls) 3
-    2))
+    (is-strike rolls) 3
+    :else 2))
+
+(defn get-num-rolls-for-frames
+  [rolls]
+  (if (is-strike rolls) 1 2))
 
 (defn make-frames
   [rolls]
-  (lazy-seq (cons (take (get-frame-roll-count rolls) rolls) (make-frames (drop 2 rolls)))))
+  (lazy-seq
+          (cons (take (get-num-rolls-for-score rolls) rolls)
+                (make-frames (drop (get-num-rolls-for-frames rolls) rolls)))))
 
 (defn make-game
   [rolls]
