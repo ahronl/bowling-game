@@ -7,4 +7,4 @@
   (println "Hello, World!"))
 
 (defn score [frames]
-  0)
+  (reduce + frames))

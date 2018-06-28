@@ -7,5 +7,9 @@
     (is (= 0 0))))
 
 (deftest gutter-game-test
-    (testing "When calculating the score of a bowling game it returns a zero score for a complete gutter game"
+    (testing "When invoke score on a gutter game it returns a zero score"
         (is (= (score (repeat 20 0)) 0))))
+
+(deftest two-pin-frames
+  (testing "when invoke score on all two pin frames it returns socre 20"
+        (is (= (score (repeat 20 1)) 20))))
