@@ -13,3 +13,7 @@
 (deftest two-pin-frames
   (testing "when invoke score on all two pin frames it returns socre 20"
         (is (= (score (repeat 20 1)) 20))))
+
+(deftest game-with-a-spare
+  (testing "when invoke score on a game with spare it returns adds the next roll to score"
+        (is (= (score (concat '(8 2 3) (repeat 17 0))) 16))))
